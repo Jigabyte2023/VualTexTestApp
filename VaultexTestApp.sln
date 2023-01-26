@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultexTestApp", "VaultexTestApp\VaultexTestApp.csproj", "{531B6374-484C-418C-9FF1-CB78D5882F44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaultex.DataAccess", "Vaultex.DataAccess\Vaultex.DataAccess.csproj", "{29159243-C08C-4DCE-A68C-545883A34D07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{531B6374-484C-418C-9FF1-CB78D5882F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531B6374-484C-418C-9FF1-CB78D5882F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531B6374-484C-418C-9FF1-CB78D5882F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531B6374-484C-418C-9FF1-CB78D5882F44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29159243-C08C-4DCE-A68C-545883A34D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29159243-C08C-4DCE-A68C-545883A34D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29159243-C08C-4DCE-A68C-545883A34D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29159243-C08C-4DCE-A68C-545883A34D07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {303DFE70-07CF-4CF7-A93C-5847DEF89953}
+	EndGlobalSection
+EndGlobal

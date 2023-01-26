@@ -1,0 +1,58 @@
+﻿@model IEnumerable<VaultexTestApp.ViewModels.EmployeesViewModel>
+ 
+<center>
+    <h1>Vualtex Test Application</h1>
+    <hr />
+    <div class="row align-items-start mt-2 mb-2">
+        <div class="col-2">
+            <label class="col-form-label">Connection String</label>
+        </div>
+        <div class="col-10">
+                <input type="text"class="form-control" placeholder="Company Name" value="@ViewBag.connectionString" />
+        </div>
+    </div>
+    <table id="mainTable" class="table table-bordered table-hover table-fluid mt-2">
+        <thead class="thead" style="background-color: #3b70c4; color: white; font-size: 9pt;">
+            <tr>
+                <th>Organisation No.</th>
+                <th>Organisation Name</th>
+                <td>Address Line 1</td>
+                <td style="width:80px;">Address Line 2</td>
+                <td style="width:80px;">Address Line 3</td>
+                <td style="width:80px;">Address Line 4</td>
+                <td>Town</td>
+                <td>PostCode</td>
+                <td>Employee First Name</td>
+                <td>Employee Last Name</td>
+            </tr>
+        </thead>
+        @{
+            foreach (var row in Model)
+            {
+                <tr style="font-size: 9pt;">
+                    <td> @row.organisations.OrganisationNumber </td>
+                    <td> @row.organisations.OrganisationName </td>
+                    <td> @row.organisations.AddressLine1 </td>
+                    <td> @row.organisations.AddressLine2 </td>
+                    <td> @row.organisations.AddressLine3 </td>
+                    <td> @row.organisations.AddressLine4 </td>
+                    <td> @row.organisations.Town </td>
+                    <td> @row.organisations.PostCode </td>
+                    <td> @row.employees.FirstName </td>
+                    <td> @row.employees.LastName </td>
+                </tr>
+            }
+        }
+    </table>
+</center>
+<a class="btn btn-primary mt-2 float-end" asp-controller="Vaultex" asp-action="ImportData" style="width: 120px;">Import Data</a>
+
+@section Scripts {
+    <link rel="stylesheet" href="~/lib/datatables/DataTables-1.13.1/css/jquery.dataTables.min.css" />
+    <script src="~/lib/datatables//DataTables-1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#mainTable').DataTable();
+        });
+    </script>
+}
