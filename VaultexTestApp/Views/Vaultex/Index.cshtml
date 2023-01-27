@@ -3,14 +3,6 @@
 <center>
     <h1>Vualtex Test Application</h1>
     <hr />
-    <div class="row align-items-start mt-2 mb-2">
-        <div class="col-2">
-            <label class="col-form-label">Connection String</label>
-        </div>
-        <div class="col-10">
-                <input type="text"class="form-control" placeholder="Company Name" value="@ViewBag.connectionString" />
-        </div>
-    </div>
     <table id="mainTable" class="table table-bordered table-hover table-fluid mt-2">
         <thead class="thead" style="background-color: #3b70c4; color: white; font-size: 9pt;">
             <tr>
@@ -45,7 +37,6 @@
         }
     </table>
 </center>
-<a class="btn btn-primary mt-2 float-end" asp-controller="Vaultex" asp-action="ImportData" style="width: 120px;">Import Data</a>
 
 @section Scripts {
     <link rel="stylesheet" href="~/lib/datatables/DataTables-1.13.1/css/jquery.dataTables.min.css" />

@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Vaultex.DataAccess\Vaultex.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Spreadsheet\" />
+  </ItemGroup>
+
 </Project>

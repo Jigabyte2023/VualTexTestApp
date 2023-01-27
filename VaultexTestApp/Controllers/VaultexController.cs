@@ -11,20 +11,23 @@ using VaultexTestApp.ViewModels;
 using System.IO;
 using ExcelDataReader;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
 
 namespace VaultexTestApp.Controllers
 {
     public class VaultexController : Controller
     {
-        private string excelFile = @"F:\VaultexData.xlsx";
+        private IWebHostEnvironment Environment;
+        private string excelFile;
         private DataTableCollection tableCollection;
-        private string connectionString = "server=DESKTOP-Q9UHDLU\\RPPRESOLVEIT; database=Vaultex; Integrated Security=true;";
 
         public readonly AppDBContext context;
 
-        public VaultexController(AppDBContext context)
+        public VaultexController(AppDBContext context, IWebHostEnvironment _environment)
         {
             this.context = context;
+            this.Environment = _environment;
+            excelFile = _environment.WebRootPath + "\\SpreadSheet\\VaultexData.xlsx";
         }
 
         private void AddOrganisation(Organisations organisation)
@@ -86,32 +89,25 @@ namespace VaultexTestApp.Controllers
             dtEmployees.Dispose();
         }
 
-        public IActionResult ImportData()
+        public void ImportData()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
 
-            using (var stream = System.IO.File.Open(excelFile, FileMode.Open, FileAccess.Read))
+            if (System.IO.File.Exists(excelFile))
             {
-                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                using (var stream = System.IO.File.Open(excelFile, FileMode.Open, FileAccess.Read))
                 {
-                    tableCollection = reader.AsDataSet().Tables;
-                    readExcelSheetData();
-                }
-                return Index();
+                    using (var reader = ExcelReaderFactory.CreateReader(stream))
+                    {
+                        tableCollection = reader.AsDataSet().Tables;
+                        readExcelSheetData();
+                    }
+                }            
             }
-        }
-
-        private string GetCurrentConnectionString()
-        {
-            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true);
-            IConfiguration _configuration = builder.Build();
-            return _configuration.GetConnectionString("VaultexDBConnection");
         }
         public IActionResult Index()
         {
-            //ImportData();
-            ViewBag.connectionString = GetCurrentConnectionString();
+            ImportData();
             List<Organisations> organisations = context.Organisations.ToList();
             List<Employees> employees = context.Employees.ToList();
             var tableData = from org in organisations
